@@ -1,7 +1,7 @@
 apt-get update
 sudo apt install docker.io -y
 
-docker swarm init
+sudo docker swarm init
 
 sudo docker network create -d web_network \
 --driver overlay \
