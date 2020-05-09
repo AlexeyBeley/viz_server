@@ -7,7 +7,7 @@ import falcon
 import json
 import logging
 
-logger = logging.getLogger('test_aws_api')
+logger = logging.getLogger('Backend_App')
 logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 ch = logging.StreamHandler()
