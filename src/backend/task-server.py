@@ -7,10 +7,18 @@ import falcon
 import json
 import logging
 
+logger = logging.getLogger('test_aws_api')
+logger.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+ch.setFormatter(formatter)
+logger.addHandler(ch)
+
 class HandleRequest(object):
     def on_get(self, req, resp):
         raw_data = req.bounded_stream.read()
-        logging.debug(raw_data.decode("utf-8"))
+        logger.debug(raw_data.decode("utf-8"))
         resp.body = json.dumps({'Status': 'OK'})
         resp.status = falcon.HTTP_200
 
