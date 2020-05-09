@@ -1,5 +1,5 @@
 apt-get update
-sudo apt install docker.io
+sudo apt install docker.io -y
 
 docker network create web_network \
 --driver overlay \
