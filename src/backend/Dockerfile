@@ -8,6 +8,5 @@ WORKDIR /app
 
 ENTRYPOINT ["./gunicorn_starter.sh"]
 
-#docker build -t fb/backend .
-#docker run -d -p 8000:8000 fb/backend
+#docker run -d -p 8000:8000 backend
 

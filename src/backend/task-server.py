@@ -8,14 +8,11 @@ import json
 import logging
 
 class HandleRequest(object):
-    def on_post(self, req, resp):
+    def on_get(self, req, resp):
         raw_json = req.bounded_stream.read()
         obj = json.loads(raw_json.decode("utf-8"))
         logging.debug(obj)
-        if 'jackPot' in obj:
-            resp.body = json.dumps({'Status': 'OK'})
-        else:
-            resp.body = json.dumps({'Status': 'Fail', 'Reason': 'no jackPot'})
+        resp.body = json.dumps({'Status': 'OK'})
         resp.status = falcon.HTTP_200
 
 app = falcon.API()
@@ -28,9 +25,7 @@ if __name__ == '__main__':
     httpd = simple_server.make_server('127.0.0.1', 8000, app)
     httpd.serve_forever()
 
-#success
-#curl -i -X POST -H 'Content-Type: application/json' -d '{"jackPot": "winwin"}' http://127.0.0.1:8000/abracadabra
+#test
+#curl -i -H 'Content-Type: application/json' http://127.0.0.1:8000/abracadabra
 
-#fail
-#curl -i -X POST -H 'Content-Type: application/json' -d '{"jackPot1": "rainwin"}' http://127.0.0.1:8000/abracadabra
 

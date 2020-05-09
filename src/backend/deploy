@@ -1,12 +1,4 @@
 #!/bin/bash
 
-sudo apt-get update
-sudo apt-get install python-pip python-dev
-pip install -r requirements.txt
-
-gunicorn 'task-server:app'
-
-
-docker run -d --network internal_network --ip 192.168.1.2 fb/backend
-
-docker network connect --ip 192.168.1.2 internal_network 84a6b
+docker build -t backend .
+docker run -d -p 8000:8000 --network internal_network --ip 192.168.1.2 backend
