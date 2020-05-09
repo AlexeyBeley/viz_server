@@ -9,9 +9,8 @@ import logging
 
 class HandleRequest(object):
     def on_get(self, req, resp):
-        raw_json = req.bounded_stream.read()
-        obj = json.loads(raw_json.decode("utf-8"))
-        logging.debug(obj)
+        raw_data = req.bounded_stream.read()
+        logging.debug(raw_data.decode("utf-8"))
         resp.body = json.dumps({'Status': 'OK'})
         resp.status = falcon.HTTP_200
 
