@@ -3,7 +3,7 @@
 #exit 0- no change
 #exit 1- new commit found
 
-git checkout master
+#todo: git checkout master
 git pull
 NEW_VERSION=$(git rev-parse --verify HEAD)
 
