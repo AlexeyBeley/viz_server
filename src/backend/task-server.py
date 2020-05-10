@@ -7,15 +7,19 @@ import falcon
 import json
 import logging
 
+logger = logging.getLogger('Backend_App')
+logger.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+ch.setFormatter(formatter)
+logger.addHandler(ch)
+
 class HandleRequest(object):
-    def on_post(self, req, resp):
-        raw_json = req.bounded_stream.read()
-        obj = json.loads(raw_json.decode("utf-8"))
-        logging.debug(obj)
-        if 'jackPot' in obj:
-            resp.body = json.dumps({'Status': 'OK'})
-        else:
-            resp.body = json.dumps({'Status': 'Fail', 'Reason': 'no jackPot'})
+    def on_get(self, req, resp):
+        raw_data = req.bounded_stream.read()
+        logger.debug(raw_data.decode("utf-8"))
+        resp.body = json.dumps({'Status': 'OK'})
         resp.status = falcon.HTTP_200
 
 app = falcon.API()
@@ -28,9 +32,7 @@ if __name__ == '__main__':
     httpd = simple_server.make_server('127.0.0.1', 8000, app)
     httpd.serve_forever()
 
-#success
-#curl -i -X POST -H 'Content-Type: application/json' -d '{"jackPot": "winwin"}' http://127.0.0.1:8000/abracadabra
+#test
+#curl -i -H 'Content-Type: application/json' http://127.0.0.1:8000/abracadabra
 
-#fail
-#curl -i -X POST -H 'Content-Type: application/json' -d '{"jackPot1": "rainwin"}' http://127.0.0.1:8000/abracadabra
 
