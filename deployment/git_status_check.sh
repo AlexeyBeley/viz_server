@@ -9,7 +9,7 @@ NEW_VERSION=$(git rev-parse --verify HEAD)
 
 RETURN_CODE=0
 
-if [-f current_hash.txt ]; then
+if [ -f current_hash.txt ]; then
     if [[ $(< current_hash.txt) != "$NEW_VERSION" ]]; then
         RETURN_CODE=1
     fi
