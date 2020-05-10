@@ -4,7 +4,7 @@
 #exit 1- new commit found
 
 cd /home/ubuntu/actions-runner/git_checker/viz_server/deployment
-#todo: git checkout master
+git checkout master
 
 git pull
 NEW_VERSION=$(git rev-parse --verify HEAD)
