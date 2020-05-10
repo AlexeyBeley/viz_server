@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 #exit 0- no change
 #exit 1- new commit found
