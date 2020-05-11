@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo docker build -t front .
-sudo docker run -d -p 80:80 --network internal_network --ip 192.168.1.3 front
+sudo docker run -d -p 80:80 --network internal_network --ip 192.168.1.3 -l front front
 
 
 #sudo docker run -d -p 80:80 --network internal_network --ip 192.168.1.3 ./front_config.conf:/etc/nginx/conf.d/front_config.conf front
