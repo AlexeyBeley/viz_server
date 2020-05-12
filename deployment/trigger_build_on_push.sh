@@ -1,4 +1,5 @@
-#!/bin/bash -x -e
+#!/bin/bash -x
+set -e
 #crontab -e
 #*/1 * * * * /home/ubuntu/viz_server/deployment/trigger_build_on_push.sh > /home/ubuntu/viz_server/deployment/trigger_build_on_push.log 2>&1
 
