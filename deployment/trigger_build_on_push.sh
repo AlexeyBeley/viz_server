@@ -1,9 +1,11 @@
 #!/bin/bash -x
+#crontab -e
+#*/1 * * * * /home/ubuntu/viz_server/deployment/trigger_build_on_push.sh > /home/ubuntu/viz_server/deployment/trigger_build_on_push.log 2>&1
 
 #exit 0- no change
 #exit 1- new commit found
 
-cd /home/ubuntu/actions-runner/git_checker/viz_server/deployment
+cd /home/ubuntu/viz_server/deployment
 git checkout master
 
 git pull
