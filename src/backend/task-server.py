@@ -19,7 +19,7 @@ class HandleRequest(object):
     def on_get(self, req, resp):
         raw_data = req.bounded_stream.read()
         logger.debug(raw_data.decode("utf-8"))
-        resp.body = json.dumps({'Status': 'OK'})
+        resp.body = json.dumps({'Return_Status': 'OK'})
         resp.status = falcon.HTTP_200
 
 app = falcon.API()
